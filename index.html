@@ -40,15 +40,23 @@
     <section id="hero"
         class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
         <main>
-            <h4 class="animate__animated animate__fadeIn wow" data-wow-duration="1s" data-wow-delay="0.5s">Kepada
-                <span>Bapak/Ibu/Saudara/i, </span></h4>
             <h1 class="animate__animated animate__fadeIn wow d-flex flex-column align-items-center"
-                data-wow-duration="1s" data-wow-delay="0.5s" style="line-height:1;">
+                data-wow-duration="1s" data-wow-delay="0.5s"
+                style="line-height:1; color: #000; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">
                 <span style="font-size:2.5rem;">Aris</span>
                 <span style="font-size:2rem;">&amp;</span>
                 <span style="font-size:2.5rem;">Yuliyanti Arthamevia</span>
             </h1>
-            <p class="animate__animated animate__fadeIn wow" data-wow-duration="1s" data-wow-delay="0.5s">Akan
+            <h4 class="animate__animated animate__fadeIn wow" data-wow-duration="1s" data-wow-delay="0.5s"
+                style="color: #000; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">
+                Kepada
+                <span>Bapak/Ibu/Saudara/i, </span>
+                <br>
+                <span id="nama-tamu"></span>
+            </h4>
+            <p class="animate__animated animate__fadeIn wow" data-wow-duration="1s" data-wow-delay="0.5s"
+                style="color: #000; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">
+                Akan
                 melangsungkan resepsi pernikahan dalam:</p>
             <div class="simply-countdown animate__animated animate__fadeIn wow glass-bg" data-wow-duration="1s"
                 data-wow-delay="0.5s"></div>
@@ -419,8 +427,10 @@
             </div>
 
             <script>
-                const SHEET_SCRIPT_URL ="https://script.google.com/macros/s/AKfycbyzins9EhuKVrK9mLyURNX77PD_w9FfjG2j43c9xC8T4TILJNUoIjhqSNuDnMzUesfZvg/exec";
-                const SHEET_SCRIPT_KONTEN = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLiO2USFWkMvTRYZ58L6t36fezIg9aw2FrxsIFz8E78oNqtT-GxjYCudU5laJeJtJsSBI4GyxLWcvnv-SdfE1zGyXaXiqpp_N5Xjt4cieUV5Oyb4LRI_in6XC5YhPYFRapsI78zaTwEoDLwEhC8ecdZZB3pzRFIQaTEaha_V3bYgYG-rJFLtzWBXHa4iJ59CGuskQHTOv8C7bjQrNuicUR-UzMJI4hVzXRdGH2ZuMsMI8cKmR0nHY3xtycWHzLrw361DtBbZTKSYDWSZDHB-AqSIBie1ZxRnH0BENMCa&lib=MhzEpUpnOAqEF-WL5fV3J_zR1fv1alQeD";
+                const SHEET_SCRIPT_URL =
+                    "https://script.google.com/macros/s/AKfycbyzins9EhuKVrK9mLyURNX77PD_w9FfjG2j43c9xC8T4TILJNUoIjhqSNuDnMzUesfZvg/exec";
+                const SHEET_SCRIPT_KONTEN =
+                    "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLiO2USFWkMvTRYZ58L6t36fezIg9aw2FrxsIFz8E78oNqtT-GxjYCudU5laJeJtJsSBI4GyxLWcvnv-SdfE1zGyXaXiqpp_N5Xjt4cieUV5Oyb4LRI_in6XC5YhPYFRapsI78zaTwEoDLwEhC8ecdZZB3pzRFIQaTEaha_V3bYgYG-rJFLtzWBXHa4iJ59CGuskQHTOv8C7bjQrNuicUR-UzMJI4hVzXRdGH2ZuMsMI8cKmR0nHY3xtycWHzLrw361DtBbZTKSYDWSZDHB-AqSIBie1ZxRnH0BENMCa&lib=MhzEpUpnOAqEF-WL5fV3J_zR1fv1alQeD";
 
                 // Ambil komentar dari Google Spreadsheet via Apps Script
                 function loadSheetComments() {
@@ -660,7 +670,7 @@
 
     <div id="audio-container">
         <audio id="song" autoplay loop>
-            <source src="audio/sound.mp3" type="audio/mp3">
+            <source src="audio/videoplayback.m4a" type="audio/mp3">
         </audio>
 
         <div class="audio-icon-wrapper" style="display: none;">
@@ -806,12 +816,13 @@
     </script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const nama = urlParams.get('n') || ''||'ditempat';
-        const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
-        const namaContainer = document.querySelector('.hero h4 span');
-        namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
-
-        document.querySelector('#nama').value = nama;
+        const nama = urlParams.get('n') || 'ditempat';
+        const pronoun = urlParams.get('p') || '';
+        const namaTamu = document.getElementById('nama-tamu');
+        namaTamu.innerText = nama;
+        // Jika ada input nama di RSVP, isi otomatis
+        const namaInput = document.querySelector('input[name="nama"]');
+        if (namaInput) namaInput.value = nama;
     </script>
 </body>
 
