@@ -47,19 +47,20 @@
                 <span style="font-size:2rem;">&amp;</span>
                 <span style="font-size:2.5rem;">Yuliyanti Arthamevia</span>
             </h1>
-            <h4 class="animate__animated animate__fadeIn wow" data-wow-duration="1s" data-wow-delay="0.5s"
-                style="color: #000; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">
-                Kepada
-                <span>Bapak/Ibu/Saudara/i, </span>
-                <br>
-                <span id="nama-tamu"></span>
-            </h4>
             <p class="animate__animated animate__fadeIn wow" data-wow-duration="1s" data-wow-delay="0.5s"
                 style="color: #000; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">
                 Akan
                 melangsungkan resepsi pernikahan dalam:</p>
             <div class="simply-countdown animate__animated animate__fadeIn wow glass-bg" data-wow-duration="1s"
                 data-wow-delay="0.5s"></div>
+            <h4 class="animate__animated animate__fadeIn wow" data-wow-duration="1s" data-wow-delay="0.5s"
+                style="color: #000; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">
+                Kepada
+                <span>Bapak/Ibu/Saudara/i, </span>
+                <br>
+                <br>
+                <span id="nama-tamu"></span>
+            </h4>
             <style>
                 .glass-bg {
                     background: rgba(0, 0, 0, 0.1);
@@ -756,7 +757,7 @@
         }
 
         function playAudio() {
-            song.volume = 0.1;
+            song.volume = 1.0;
             audioIconWrapper.style.display = 'flex';
             song.play();
             isPlaying = true;
@@ -816,7 +817,7 @@
     </script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const nama = urlParams.get('n') || 'ditempat';
+        const nama = urlParams.get('n') || '';
         const pronoun = urlParams.get('p') || '';
         const namaTamu = document.getElementById('nama-tamu');
         namaTamu.innerText = nama;
